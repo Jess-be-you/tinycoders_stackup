@@ -6,15 +6,15 @@ import Home from './components/home/Home';
 import DataProvider from './context/DataProvider';
 import Header from './components/header/Header';
 
-const PrivateRoute=({isAuthenticated,...props})=>{
-  return isAuthenticated?
-  <>
-    <Header/>
-    <Outlet/>
-  </>
-  :
-  <Navigate replace to='/login'/>
-}
+// const PrivateRoute=({isAuthenticated,...props})=>{
+//   return isAuthenticated?
+//   <>
+//     <Header/>
+//     <Outlet/>
+//   </>
+//   :
+//   <Navigate replace to='/login'/>
+// }
 
 function App() {
   const[isAuthenticated,isUserAuthenticated]=useState(false);
@@ -26,11 +26,11 @@ function App() {
         <Routes>
           <Route path='/login' element={<Login isUserAuthenticated={isUserAuthenticated}/>}/>
           
-          <Route path='/' element={<PrivateRoute isAuthenticated={isAuthenticated}/>}>
+          {/* <Route path='/' element={<PrivateRoute isAuthenticated={isAuthenticated}/>}> */}
             <Route path='/' element={<Home />}/>
-          </Route> 
+          {/* </Route>  */}
+  
 
-     
         </Routes>
       </div>
     </BrowserRouter>
