@@ -43,15 +43,25 @@ const Text=styled(Typography)`
     color:#878787;
     font-size:16px;
 `;
-
+const signupInitialValues = {
+    name: '',
+    username: '',
+    password: '',
+};
 const Login=()=>{
 
     const[account,toggleAccount]=useState(true);
+    const [signup, setSignup] = useState(signupInitialValues);
+    const [error, showError] = useState('');
 
     const imageURL = 'https://www.sesta.it/wp-content/uploads/2021/03/logo-blog-sesta-trasparente.png';
 
     const toggleSignup=()=>{
         toggleAccount(!account);
+    }
+
+    const onInputChange=(e)=>{
+        setSignup({...signup,[e.target.name]:e.target.value});
     }
 
     return(
@@ -68,9 +78,9 @@ const Login=()=>{
             </Wrapper>
             :
             <Wrapper> 
-                <TextField variant="standard" label="Enter username"/>
-                <TextField variant="standard" label="Enter password"/>
-                <TextField variant="standard" label="Enter password"/>
+                <TextField variant="standard" onChange={(e)=>onInputChange(e)} name='name' label="Enter Name"/>
+                <TextField variant="standard" onChange={(e)=>onInputChange(e)} name='username' label="Enter Username"/>
+                <TextField variant="standard" onChange={(e)=>onInputChange(e)} name='password' label="Enter password"/>
                 
                 <SignupButton >Signup</SignupButton>
                 <Text style={{textAlign:'center'}}>OR</Text>
