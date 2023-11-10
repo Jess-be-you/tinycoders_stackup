@@ -1,8 +1,8 @@
-
+import Banner from "../banner/Banner";
 
 const  Home =()=>{
     return(
-        <div>Heloo</div>
+        <Banner />
     );
 }
 export default Home;
