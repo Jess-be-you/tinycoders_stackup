@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link , useSearchParams} from "react-router-dom";
 import { Button,Table,TableHead,TableRow,TableCell,TableBody ,styled} from "@mui/material";
 import { categories } from "../../constants/data";
 
@@ -12,17 +12,28 @@ const StyleButton=styled(Button)`
     color:#fff;
 `;
 
+const StyledLink = styled(Link)`
+    text-decoration: none;
+    color: inherit;
+`;
+
 const Categories=()=>{
+
+    const [searchParams] = useSearchParams();
+    const category = searchParams.get('category');
+
     return(
         <>
-            <Link to='/create' style={{textDecoration:'none'}} >
+            <Link to={`/create?category=${category || ''}`} style={{textDecoration:'none'}} >
                 <StyleButton variant="contained">Host an Event</StyleButton>
             </Link>
             <StyledTable>
                 <TableHead>
                     <TableRow>
                         <TableCell>
-                            All Categories
+                            <StyledLink to={"/"}>
+                                All Categories
+                            </StyledLink>
                         </TableCell>
                     </TableRow>
                 </TableHead>
@@ -30,7 +41,9 @@ const Categories=()=>{
                     {categories.map(category=>(
                         <TableRow key={category.id}>
                         <TableCell>
-                            {category.type}
+                            <StyledLink to={`/?category=${category.type}`}>
+                                {category.type}
+                            </StyledLink>
                         </TableCell>
                     </TableRow>
                     ))}

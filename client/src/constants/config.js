@@ -38,3 +38,5 @@ export const SERVICE_URLS = {
     deleteComment: { url: 'comment/delete', method: 'DELETE', query: true },
     updatePost: { url: 'update', method: 'PUT', query: true }
 }
+//service urls
+//uploadFile:{url:'/file/upload' , method: 'POST'}
