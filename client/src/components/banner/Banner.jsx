@@ -18,7 +18,7 @@ const Heading = styled(Typography)`
 `;
 
 const SubHeading = styled(Typography)`
-    font-size: 20px;
+    font-size: 17px;
     color:white;
     // background: #FFFFFF;
 `;
@@ -28,7 +28,7 @@ const  Banner =()=>{
     return(
         <Image>
             <Heading>EVENTO</Heading>
-            <SubHeading>TINYCODERS</SubHeading>
+            <SubHeading>AN EVENT MANAGEMENT PLATFORM</SubHeading>
         </Image>
     );
 }

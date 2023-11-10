@@ -1,8 +1,25 @@
+import { Grid } from "@mui/material";
+//components
 import Banner from "../banner/Banner";
+import Categories from "./Categories";
+
+
 
 const  Home =()=>{
     return(
-        <Banner />
+        <>
+            <Banner />
+            <Grid container>
+                <Grid item lg={2} xs={12} sm={2}>
+                    <Categories/>
+                </Grid>
+                <Grid container item lg={10} xs={12} sm={10}>
+                    Posts
+                </Grid>
+            </Grid>
+            
+        </>
+        
     );
 }
 export default Home;
