@@ -1,33 +1,35 @@
 import { Box, Typography, styled } from "@mui/material";
 
 const Image=styled(Box)`
-    background:url('https://img.freepik.com/free-vector/computer-task-management-composition_1284-73039.jpg?w=1380&t=st=1699601216~exp=1699601816~hmac=088e9698abcddb2dc444c074faa3c7a35eb2fc3672f473765a12cbe549ca6af9') center/55% repeat-x #000;
+    background:url(https://img.freepik.com/free-vector/isometric-time-management-concept_23-2148832036.jpg?w=996&t=st=1699613800~exp=1699614400~hmac=03c5a75892a5c9f40dffe102b8b14b9ca07f56d066f5b44015d1eabbcc45a159) center/100% ;
+    // opacity:0.7;
     width:100%;
     height:50vh;
     display:flex;
     flex-direction:column;
-    align-items:center;
+    align-items:left;
     justify-content:center;
-`
+`;
 
 const Heading = styled(Typography)`
     font-size: 70px;
-    color: #FFFFFF;
+    color:white ;
     line-height: 1
 `;
 
 const SubHeading = styled(Typography)`
     font-size: 20px;
-    background: #FFFFFF;
+    color:white;
+    // background: #FFFFFF;
 `;
 
 
 const  Banner =()=>{
     return(
-        <Box>
-            <Heading>EVENTS</Heading>
+        <Image>
+            <Heading>EVENTO</Heading>
             <SubHeading>TINYCODERS</SubHeading>
-        </Box>
+        </Image>
     );
 }
 export default Banner; 
