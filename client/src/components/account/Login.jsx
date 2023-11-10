@@ -63,19 +63,20 @@ const signupInitialValues = {
     username: '',
     password: '',
 };
-const Login=(isUserAuthenticated)=>{
+const Login=({isUserAuthenticated})=>{
 
     const [login, setLogin] = useState(loginInitialValues);
-    const[account,toggleAccount]=useState('login');
     const [signup, setSignup] = useState(signupInitialValues);
     const [error, showError] = useState('');
+    const[account,toggleAccount]=useState('login');
+    
     const navigate=useNavigate();
+    const {setAccount} = useContext(DataContext)
     
     useEffect(() => {
         showError(false);
     }, [login])
 
-    const {setAccount} = useState(DataContext)
 
     const toggleSignup=()=>{
         toggleAccount(!account);
