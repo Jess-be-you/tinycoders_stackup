@@ -1,5 +1,6 @@
 import {useState} from "react";
 import {Box,TextField,Button,styled,Typography} from '@mui/material';
+import { useNavigate } from "react-router-dom";
 
 const Component=styled(Box)`
     width: 400px;
@@ -53,6 +54,7 @@ const Login=()=>{
     const[account,toggleAccount]=useState(true);
     const [signup, setSignup] = useState(signupInitialValues);
     const [error, showError] = useState('');
+    const navigate=useNavigate();
 
     const imageURL = 'https://www.sesta.it/wp-content/uploads/2021/03/logo-blog-sesta-trasparente.png';
 
