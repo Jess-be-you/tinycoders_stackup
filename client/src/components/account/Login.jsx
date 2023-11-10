@@ -2,8 +2,7 @@ import {useState , useContext} from "react";
 import {Box,TextField,Button,styled,Typography} from '@mui/material';
 import { useNavigate } from "react-router-dom";
 import { DataContext } from "../../context/DataProvider";
-
-
+import logo from '../../assets/logo.png'
 const Component=styled(Box)`
     width: 400px;
     margin:auto;
@@ -18,7 +17,7 @@ const Image=styled('img')({
 });
 
 const Wrapper=styled(Box)`
-    padding:25px 35px;
+    padding:10px 35px;
     display:flex;
     flex:1;
     flex-direction:column;   
@@ -61,8 +60,6 @@ const Login=(isUserAuthenticated)=>{
 
     const {setAccount} = useState(DataContext)
 
-    const imageURL = 'https://www.sesta.it/wp-content/uploads/2021/03/logo-blog-sesta-trasparente.png';
-
     const toggleSignup=()=>{
         toggleAccount(!account);
     }
@@ -74,7 +71,8 @@ const Login=(isUserAuthenticated)=>{
     return(
         <Component>
         <Box>
-            <Image src= {imageURL} alt="image" />
+            <Image src= {logo} alt="image" />
+            <h1 style={{textAlign:'center'}}>EVENTO</h1>
             {account===true?
             <Wrapper> 
                 <TextField variant="standard" label="Enter username"/>
