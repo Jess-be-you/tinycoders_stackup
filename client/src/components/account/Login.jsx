@@ -51,7 +51,7 @@ const signupInitialValues = {
     username: '',
     password: '',
 };
-const Login=()=>{
+const Login=(isUserAuthenticated)=>{
 
     const[account,toggleAccount]=useState(true);
     const [signup, setSignup] = useState(signupInitialValues);
@@ -101,5 +101,5 @@ const Login=()=>{
 export default Login;
 
 // setAccount({username:response.data.username,name:response.data.name}) in login user
-
+// isUserAuthenticated(true);
 //navigate('/'); in login user
