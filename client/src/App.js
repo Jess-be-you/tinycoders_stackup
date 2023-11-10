@@ -4,10 +4,12 @@ import {BrowserRouter,Routes,Route} from 'react-router-dom';
 
 import Login from './components/account/Login';
 import Home from './components/home/Home';
+import DataProvider from './context/DataProvider';
 
 function App() {
   return (
-    <BrowserRouter>
+    <DataProvider>
+      <BrowserRouter>
       <div style={{marginTop:64 }} >
         <Routes>
           <Route path='/login' element={<Login />}/>
@@ -15,6 +17,7 @@ function App() {
         </Routes>
       </div>
     </BrowserRouter>
+    </DataProvider>
   );
 }
 

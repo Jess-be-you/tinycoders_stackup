@@ -1,6 +1,8 @@
-import {useState} from "react";
+import {useState , useContext} from "react";
 import {Box,TextField,Button,styled,Typography} from '@mui/material';
 import { useNavigate } from "react-router-dom";
+import { DataContext } from "../../context/DataProvider";
+
 
 const Component=styled(Box)`
     width: 400px;
@@ -55,6 +57,9 @@ const Login=()=>{
     const [signup, setSignup] = useState(signupInitialValues);
     const [error, showError] = useState('');
     const navigate=useNavigate();
+    
+
+    const {setAccount} = useState(DataContext)
 
     const imageURL = 'https://www.sesta.it/wp-content/uploads/2021/03/logo-blog-sesta-trasparente.png';
 
@@ -94,3 +99,7 @@ const Login=()=>{
     )
 }
 export default Login;
+
+// setAccount({username:response.data.username,name:response.data.name}) in login user
+
+//navigate('/'); in login user
