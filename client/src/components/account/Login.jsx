@@ -1,4 +1,4 @@
-import {useState , useContext} from "react";
+import {useState,useEffect , useContext} from "react";
 import {Box,TextField,Button,styled,Typography} from '@mui/material';
 import { useNavigate } from "react-router-dom";
 import { DataContext } from "../../context/DataProvider";
@@ -53,6 +53,10 @@ const Error = styled(Typography)`
     margin-top: 10px;
     font-weight: 600;
 `
+const loginInitialValues = {
+    username: '',
+    password: ''
+};
 
 const signupInitialValues = {
     name: '',
@@ -61,16 +65,24 @@ const signupInitialValues = {
 };
 const Login=(isUserAuthenticated)=>{
 
-    const[account,toggleAccount]=useState(true);
+    const [login, setLogin] = useState(loginInitialValues);
+    const[account,toggleAccount]=useState('login');
     const [signup, setSignup] = useState(signupInitialValues);
     const [error, showError] = useState('');
     const navigate=useNavigate();
     
+    useEffect(() => {
+        showError(false);
+    }, [login])
 
     const {setAccount} = useState(DataContext)
 
     const toggleSignup=()=>{
         toggleAccount(!account);
+    }
+
+    const onValueChange = (e) => {
+        setLogin({ ...login, [e.target.name]: e.target.value });
     }
 
     const onInputChange=(e)=>{
@@ -89,6 +101,23 @@ const Login=(isUserAuthenticated)=>{
         }
     }
 
+    const loginUser=async()=>{
+        let response = await API.userLogin(login);
+        if (response.isSuccess) {
+            showError('');
+
+            sessionStorage.setItem('accessToken', `Bearer ${response.data.accessToken}`);
+            sessionStorage.setItem('refreshToken', `Bearer ${response.data.refreshToken}`);
+            setAccount({ name: response.data.name, username: response.data.username });
+            
+            isUserAuthenticated(true)
+            setLogin(loginInitialValues);
+            navigate('/');
+        } else {
+            showError('Something went wrong! please try again later');
+        }
+    }
+
     return(
         <Component>
         <Box>
@@ -96,12 +125,12 @@ const Login=(isUserAuthenticated)=>{
             <h1 style={{textAlign:'center'}}>EVENTO</h1>
             {account===true?
             <Wrapper> 
-                <TextField variant="standard" label="Enter username"/>
-                <TextField variant="standard" label="Enter password"/>
+                <TextField variant="standard" value={login.username} onChange={(e)=>onValueChange(e)} name='username' label="Enter username"/>
+                <TextField variant="standard" values={login.password} onChange={(e)=>onValueChange(e)} name='password' label="Enter password"/>
 
                 {error && <Error>{error}</Error>}
 
-                <LoginButton variant="contained">Login</LoginButton> 
+                <LoginButton variant="contained" onClick={()=>loginUser()}>Login</LoginButton> 
                 <Text style={{textAlign:'center'}}>OR</Text>
                 <SignupButton onClick={()=>toggleSignup()}>Create an account</SignupButton>
             </Wrapper>
