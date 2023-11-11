@@ -68,7 +68,7 @@ const Login=({isUserAuthenticated})=>{
     const [login, setLogin] = useState(loginInitialValues);
     const [signup, setSignup] = useState(signupInitialValues);
     const [error, showError] = useState('');
-    const[account,toggleAccount]=useState('login');
+    const[account,toggleAccount]=useState(true);
     
     const navigate=useNavigate();
     const {setAccount} = useContext(DataContext)
@@ -96,7 +96,7 @@ const Login=({isUserAuthenticated})=>{
             console.log("success");
             showError('');
             setSignup(signupInitialValues);
-            toggleAccount('login');
+            toggleAccount(!account);
         } else {
             showError('Something went wrong! please try again later');
         }

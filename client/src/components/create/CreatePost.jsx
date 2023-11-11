@@ -54,7 +54,7 @@ const CreatePost = () => {
 
     // const navigate = useNavigate();
     const location = useLocation();
-
+    const navigate = useNavigate();
     const url= post.picture ? post.picture : 'https://img.freepik.com/free-vector/business-conference-seminar-auditorium-hall-speaker-podium-giving-presentation-audience-seats-event-forum-convention-modern-center_575670-2280.jpg?size=626&ext=jpg&ga=GA1.1.1344234992.1699601063&semt=ais'
 
     useEffect(() => {
@@ -79,6 +79,12 @@ const CreatePost = () => {
     const handleChange = (e) => {
         setPost({ ...post, [e.target.name]: e.target.value });
     }
+    const savePost=async()=>{
+        let response = await API.createPost(post);
+        if(response.isSuccess){
+            navigate('/');
+        }
+    }
 
   return (
     <Container>
@@ -99,7 +105,7 @@ const CreatePost = () => {
             name='title'
             onChange={(e)=>handleChange(e)}
         />
-        <Button variant="contained" color="primary">HOST</Button>
+        <Button variant="contained" onClick={()=>savePost()} color="primary">HOST</Button>
       
      
         </StyledFormControl>
