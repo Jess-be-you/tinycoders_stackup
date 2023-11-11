@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useContext } from 'react';
 import { Box, styled,TextareaAutosize, FormControl,InputBase, Button} from '@mui/material';
 import { AddCircle as Add } from '@mui/icons-material';
-import { useNavigate, useLocation } from 'react-router-dom';
+import { useNavigate, useLocation,useParams } from 'react-router-dom';
 import { DataContext } from '../../context/DataProvider';
 import { API } from '../../service/api';
 
@@ -48,7 +48,7 @@ const initialPost = {
 }
 
 
-const CreatePost = () => {
+const Update = () => {
 
     const [file, setFile] = useState('');
     const { account } = useContext(DataContext);
@@ -57,8 +57,19 @@ const CreatePost = () => {
 
     const navigate = useNavigate();
     const location = useLocation();
-    
+    const {id} = useParams();
+
     const url= post.picture ? post.picture : 'https://img.freepik.com/free-vector/business-conference-seminar-auditorium-hall-speaker-podium-giving-presentation-audience-seats-event-forum-convention-modern-center_575670-2280.jpg?size=626&ext=jpg&ga=GA1.1.1344234992.1699601063&semt=ais'
+
+    useEffect(()=>{
+        const fetchData=async()=>{
+            let response=await API.getPostById(id);
+            if(response.isSuccess){
+                setPost(response.data);
+            }
+        }
+        fetchData();
+    },[])
 
     useEffect(() => {
         const getImage = async () => { 
@@ -82,10 +93,10 @@ const CreatePost = () => {
     const handleChange = (e) => {
         setPost({ ...post, [e.target.name]: e.target.value });
     }
-    const savePost=async()=>{
-        let response = await API.createPost(post);
+    const updateBlogPost=async()=>{
+        let response = await API.updatePost(post);
         if(response.isSuccess){
-            navigate('/');
+            navigate(`/details/${id}`);
         }
     }
 
@@ -105,10 +116,11 @@ const CreatePost = () => {
         />
         <InputTextField 
             placeholder="Title"
+            value={post.title}
             name='title'
             onChange={(e)=>handleChange(e)}
         />
-        <Button variant="contained" onClick={()=>savePost()} color="primary">HOST</Button>
+        <Button variant="contained" onClick={()=>updateBlogPost()} color="primary">Update</Button>
       
      
         </StyledFormControl>
@@ -117,9 +129,10 @@ const CreatePost = () => {
           placeholder="Give A Brief Description Of Your Project"
           name='description'
           onChange={(e)=>handleChange(e)}
+          value={post.description}
       />
     </Container>
   )
 }
 
-export default CreatePost
+export default Update

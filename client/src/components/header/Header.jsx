@@ -2,14 +2,14 @@ import {AppBar, Toolbar,Typography,styled} from '@mui/material';
 import { Link } from 'react-router-dom';
 
 const Component=styled(AppBar)`
-    background:#ffffff;
+    background:#572ed1;
     color:#000;
 `;
 const Container=styled(Toolbar)`
     justify-content:center;
     & > a {
         padding:20px;
-        color:#000;
+        color:#ffffff;
         text-decoration:none;
     }
 `;
