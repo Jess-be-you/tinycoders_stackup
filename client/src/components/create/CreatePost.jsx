@@ -52,9 +52,9 @@ const CreatePost = () => {
     const [post,setPost]=useState(initialPost);
 
 
-    // const navigate = useNavigate();
-    const location = useLocation();
     const navigate = useNavigate();
+    const location = useLocation();
+    
     const url= post.picture ? post.picture : 'https://img.freepik.com/free-vector/business-conference-seminar-auditorium-hall-speaker-podium-giving-presentation-audience-seats-event-forum-convention-modern-center_575670-2280.jpg?size=626&ext=jpg&ga=GA1.1.1344234992.1699601063&semt=ais'
 
     useEffect(() => {
