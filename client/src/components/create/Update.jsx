@@ -105,7 +105,7 @@ const Update = () => {
         <Image src={url} alt='post' />
 
         <StyledFormControl>
-        <label htmlFor="fileInput">
+        {/* <label htmlFor="fileInput">
             <Add fontSize="large" color='action' />
         </label>
         <input 
@@ -113,7 +113,7 @@ const Update = () => {
             id="fileInput"
             style={{display:'none'}}
             onChange={(e) => setFile(e.target.files[0])}
-        />
+        /> */}
         <InputTextField 
             placeholder="Title"
             value={post.title}

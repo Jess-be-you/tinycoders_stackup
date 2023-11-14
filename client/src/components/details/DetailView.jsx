@@ -30,14 +30,14 @@ const Description=styled(Typography)`
 `;
 const EditIcon=styled(Edit)`
     margin: 5 px;
-    padding;5px;
+    padding:5px;
     border: 1px solid #878787;
     border-radius:10px;
 
 `;
 const DeleteIcon=styled(Delete)`
     margin: 5 px;
-    padding;5px;
+    padding:5px;
     border: 1px solid #878787;
     border-radius:10px;
 
@@ -87,9 +87,10 @@ const DetailView=()=>{
                 
             </Box>
             <Box>
-                <Heading>Author: <Box component='span' style={ {fontWeight:600} }>{post.title}</Box></Heading>
-                <Typography style={{marginLeft:'auto'}}>{new Date(post.createDate).toDateString()}</Typography>
+                <Heading>Author: <Box component='span' style={ {fontWeight:600} }>{post.username}</Box></Heading>
+                <Typography style={{marginLeft:'auto'}}>Event posted on: {new Date(post.createdDate).toDateString()}</Typography>
             </Box>
+            <Typography>Event Description: </Typography>
             <Description>{post.description}</Description>
         </Container>
 

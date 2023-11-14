@@ -44,7 +44,7 @@ const initialPost = {
     picture: '',
     username: '',
     categories: '',
-    createdDate: new Date()
+    createdDate: (new Date()).getDate()
 }
 
 
@@ -74,6 +74,7 @@ const CreatePost = () => {
         getImage();
         post.categories = location.search?.split('=')[1] || 'All';
         post.username = account.username;
+        post.createdDate =new Date();
     }, [file])
 
 
@@ -94,7 +95,7 @@ const CreatePost = () => {
         <Image src={url} alt='post' />
 
         <StyledFormControl>
-        <label htmlFor="fileInput">
+        {/* <label htmlFor="fileInput">
             <Add fontSize="large" color='action' />
         </label>
         <input 
@@ -102,7 +103,7 @@ const CreatePost = () => {
             id="fileInput"
             style={{display:'none'}}
             onChange={(e) => setFile(e.target.files[0])}
-        />
+        /> */}
         <InputTextField 
             placeholder="Title"
             name='title'
