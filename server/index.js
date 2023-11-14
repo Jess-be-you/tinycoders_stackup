@@ -34,7 +34,7 @@ const corsOptions = {
 	credentials: true,
 };
 
-app.use(cors(corsOptions));
+app.use(cors());
 
 // app.use(cors({
 //     origin:["https://tinycoders-stackup-evento-frontend.vercel.app"],
