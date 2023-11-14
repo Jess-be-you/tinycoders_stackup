@@ -19,11 +19,11 @@ const PrivateRoute=({isAuthenticated,...props})=>{
     <Outlet/>
   </>
   :
-  <>
-    <Header/>
-    <Outlet/>
-  </>
-  // <Navigate replace to='/login'/>
+  // <>
+  //   <Header/>
+  //   <Outlet/>
+  // </>
+  <Navigate replace to='/login'/>
 }
 
 function App() {
