@@ -14,7 +14,7 @@ const Image=styled('img')({
     width:100,
     margin:'auto',
     display:'flex',
-    padding:'50px 0 20px 0 '
+    padding:'5px 0 5px 0 '
 });
 
 const Wrapper=styled(Box)`
@@ -45,6 +45,10 @@ const SignupButton=styled(Button)`
 const Text=styled(Typography)`
     color:#878787;
     font-size:16px;
+`;
+
+const Head=styled(Typography)`
+    font-size:40px;
 `;
 const Error = styled(Typography)`
     font-size: 10px;
@@ -121,9 +125,8 @@ const Login=({isUserAuthenticated})=>{
 
     return(
         <Component>
-    
             <Image src= {logo} alt="image" />
-            <h1 style={{textAlign:'center'}}>EVENTO</h1>
+            <Head style={{textAlign:'center'}}>EVENTO</Head>
             {account===true?
             <Wrapper> 
                 <TextField variant="filled" value={login.username} onChange={(e)=>onValueChange(e)} name='username' label="Enter username"/>
@@ -137,7 +140,7 @@ const Login=({isUserAuthenticated})=>{
             </Wrapper>
             :
             <Wrapper> 
-                <h1>Hello!</h1>
+                <Head style={{color:'#ff7400'}}>Hello Peeps!</Head>
                 <TextField variant="filled" onChange={(e)=>onInputChange(e)} name='name' label="Enter Name"/>
                 <TextField variant="filled" onChange={(e)=>onInputChange(e)} name='username' label="Enter Username"/>
                 <TextField variant="filled" onChange={(e)=>onInputChange(e)} name='password' type="password" label="Enter password"/>
