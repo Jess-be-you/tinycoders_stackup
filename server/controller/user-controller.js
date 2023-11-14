@@ -7,7 +7,7 @@ import User from '../model/user.js';
 
 dotenv.config();
 
-export const singupUser = async (request, response) => {
+export const signupUser = async (request, response) => {
     try {
         // const salt = await bcrypt.genSalt();
         // const hashedPassword = await bcrypt.hash(request.body.password, salt);
@@ -50,9 +50,9 @@ export const loginUser = async (request, response) => {
     }
 }
 
-// export const logoutUser = async (request, response) => {
-//     const token = request.body.token;
-//     await Token.deleteOne({ token: token });
+export const logoutUser = async (request, response) => {
+    const token = request.body.token;
+    await Token.deleteOne({ token: token });
 
-//     response.status(204).json({ msg: 'logout successfull' });
-// }
+    response.status(204).json({ msg: 'logout successfull' });
+}
