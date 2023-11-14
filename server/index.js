@@ -16,7 +16,8 @@ const whitelist = [
 	"http://127.0.0.1:3000", 
 	"localhost", 
 	"http://localhost:3000",
-    "https://tinycoders-stackup-evento-frontend.vercel.app"
+    "https://tinycoders-stackup-evento-frontend.vercel.app",
+    "https://tinycoders-stackup-evento-api.vercel.app"
 
 ];
 
@@ -34,7 +35,7 @@ const corsOptions = {
 	credentials: true,
 };
 
-app.use(cors());
+app.use(cors(corsOptions));
 
 // app.use(cors({
 //     origin:["https://tinycoders-stackup-evento-frontend.vercel.app"],
