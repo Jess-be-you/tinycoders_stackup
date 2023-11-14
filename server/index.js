@@ -16,8 +16,8 @@ const whitelist = [
 	"http://127.0.0.1:3000", 
 	"localhost", 
 	"http://localhost:3000",
-    "https://tinycoders-stackup-evento-frontend.vercel.app",
-    "https://tinycoders-stackup-evento-api.vercel.app"
+    "http://tinycoders-stackup-evento-frontend.vercel.app",
+    "http://tinycoders-stackup-evento-api.vercel.app"
 
 ];
 

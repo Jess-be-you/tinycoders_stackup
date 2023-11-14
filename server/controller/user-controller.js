@@ -39,7 +39,7 @@ export const loginUser = async (request, response) => {
             
             const newToken = new Token({ token: refreshToken });
             await newToken.save();
-            response.set("Access-Control-Allow-Origin","https://tinycoders-stackup-evento-frontend.vercel.app");
+            response.set("Access-Control-Allow-Origin","http://tinycoders-stackup-evento-frontend.vercel.app");
             return response.status(200).json({ accessToken: accessToken, refreshToken: refreshToken,name: user.name, username: user.username });
         
         } else {
