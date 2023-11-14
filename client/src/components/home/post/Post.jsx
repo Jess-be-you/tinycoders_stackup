@@ -36,6 +36,10 @@ const Heading = styled(Typography)`
 const Details = styled(Typography)`
     font-size: 14px;
     word-break: break-word;
+    display: -webkit-box;
+    -webkit-line-clamp: 4;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
 `;
 
 const Post = ({post}) => {

@@ -13,18 +13,21 @@ const Container=styled(Box)(({theme})=>({
     }
 }))
 
-const Image=styled('img')({
-    padding:'30px',
-    width:'65%',
-    height:'50vh',
-    objectFit:'cover'
-});
+const Image = styled('img')({
+    padding: '10px',
+    width: '98%',
+    height: '50vh',
+    objectFit: 'center',
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'flex-start', // Align items to the start (top)
+  });
 const Heading=styled(Typography)`
-    font-size:38px;
-    font-weight:600;
-    text-align:center;
-    margin:50px 0 10px 0;
-    word-break:break-word;
+font-size: 40px;
+font-weight: 600;
+text-align: center;
+word-break: break-word;
+color: #333;
 `;
 const Description=styled(Typography)`
     word-break:break-word;
@@ -76,9 +79,11 @@ const DetailView=()=>{
 
     return(
         <Container>
-               
-            
             <Image src={url} alt="image" />
+            <Typography style={{marginLeft:'auto'}}>Event posted on: {new Date(post.createdDate).toDateString()}</Typography>
+            <Heading><Box component='span' style={ {fontWeight:600} }>{post.title}</Box></Heading>
+
+            
             <Box style={{float:'right',padding:'30px'}}>
                 {
                     account.username=== post.username &&
@@ -87,15 +92,11 @@ const DetailView=()=>{
                         <DeleteIcon onClick={()=>deleteBlog(post._id)} color='error' style={{padding:'10px'}} />
                     </div>
                 }
-                
             </Box>
-            <Box>
-                <Heading><Box component='span' style={ {fontWeight:600} }>{post.title}</Box></Heading>
-                {/* <h1>{account.username}</h1> */}
-                <h2>Author: <Box component='span' style={ {fontWeight:400} }>{post.username}</Box></h2>
-                <Typography style={{marginLeft:'auto'}}>Event posted on: {new Date(post.createdDate).toDateString()}</Typography>
-            </Box>
-            <Typography>Event Description: </Typography>
+            {/* <Box> */}
+                <h2>Event Coordinator: <Box component='span' style={ {fontWeight:400} }>{post.username}</Box></h2>
+            {/* </Box> */}
+            <h3>Event Description </h3>
             <Description>{post.description}</Description>
         </Container>
 
