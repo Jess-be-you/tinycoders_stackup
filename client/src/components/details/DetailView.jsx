@@ -96,6 +96,12 @@ const DetailView=()=>{
             {/* <Box> */}
                 <h2>Event Coordinator: <Box component='span' style={ {fontWeight:400} }>{post.username}</Box></h2>
             {/* </Box> */}
+            <h3>Date </h3>
+            <Description>{post.date}</Description>
+            <h3>Time </h3>
+            <Description>{post.time}</Description>
+            <h3>Loaction </h3>
+            <Description>{post.location}</Description>
             <h3>Event Description </h3>
             <Description>{post.description}</Description>
         </Container>

@@ -41,6 +41,9 @@ const Textarea = styled(TextareaAutosize)`
 const initialPost = {
     title: '',
     description: '',
+    location: '',
+    date: '',
+    time: '',
     picture: '',
     username: '',
     categories: '',
@@ -113,6 +116,24 @@ const CreatePost = () => {
       
      
         </StyledFormControl>
+        <Textarea  
+          rowsMin={5}
+          placeholder="Location of event (provide 'online' for online events)"
+          name='location'
+          onChange={(e)=>handleChange(e)}
+        />
+        <Textarea  
+            rowsMin={5}
+            placeholder="eg. 05/08/23"
+            name='date'
+            onChange={(e)=>handleChange(e)}
+        />
+        <Textarea  
+        rowsMin={5}
+        placeholder="10:00 pm"
+        name='time'
+        onChange={(e)=>handleChange(e)}
+        />
         <Textarea  
           rowsMin={5}
           placeholder="Give A Brief Description Of Your Project"
