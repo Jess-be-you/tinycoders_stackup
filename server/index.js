@@ -46,7 +46,8 @@ app.use(cors(corsOptions));
 app.use(cors());
 app.use(bodyParser.json({ extended: true }));
 app.use(bodyParser.urlencoded({ extended: true }));
-app.use('/', Router);
+app.get('/',(req,res)=>res.send("Server up and running "));
+app.use('/api', Router);
 
 
 const PORT = 8000;
