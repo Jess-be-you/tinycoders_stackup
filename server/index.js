@@ -11,11 +11,36 @@ import Router from './routes/route.js';
 dotenv.config();
 
 const app = express();
-app.use(cors({
-    origin:["https://tinycoders-stackup-evento-frontend.vercel.app"],
-    methods: ["POST","GET","DELETE"],
-    credentials:true
-}))
+
+const whitelist = [
+	"http://127.0.0.1:3000", 
+	"localhost", 
+	"http://localhost:3000",
+    "https://tinycoders-stackup-evento-frontend.vercel.app"
+
+];
+
+const corsOptions = {
+	origin(origin, callback) {
+		if (!origin) {
+			return callback(null, true);
+		}
+		if (whitelist.indexOf(origin) !== -1) {
+			callback(null, true);
+		} else {
+			callback(new Error("Not allowed by CORS"));
+		}
+	},
+	credentials: true,
+};
+
+app.use(cors(corsOptions));
+
+// app.use(cors({
+//     origin:["https://tinycoders-stackup-evento-frontend.vercel.app"],
+//     methods: ["POST","GET"],
+//     credentials:true
+// }))
 
 app.use(cors());
 app.use(bodyParser.json({ extended: true }));
