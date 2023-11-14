@@ -12,7 +12,7 @@ dotenv.config();
 
 const app = express();
 app.use(cors({
-    origin:["https://tinycoders-stackup-evento-frontend.vercel.app"],
+    origin:["https://tinycoders-stackup-evento-frontend.vercel.app/"],
     methods: ["POST","GET","DELETE"],
     credentials:true
 }))
