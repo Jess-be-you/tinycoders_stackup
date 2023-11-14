@@ -18,12 +18,12 @@ const Image=styled('img')({
 });
 
 const Wrapper=styled(Box)`
-    padding:10px 35px;
+    padding:5px 25px;
     display:flex;
     flex:1;
     flex-direction:column;   
     & >div, & > button, & > p{
-        margin-top:10px
+        margin-top:20px
     }
 `;
 
@@ -121,13 +121,13 @@ const Login=({isUserAuthenticated})=>{
 
     return(
         <Component>
-        <Box>
+    
             <Image src= {logo} alt="image" />
             <h1 style={{textAlign:'center'}}>EVENTO</h1>
             {account===true?
             <Wrapper> 
-                <TextField variant="standard" value={login.username} onChange={(e)=>onValueChange(e)} name='username' label="Enter username"/>
-                <TextField variant="standard" values={login.password} onChange={(e)=>onValueChange(e)} name='password' label="Enter password"/>
+                <TextField variant="filled" value={login.username} onChange={(e)=>onValueChange(e)} name='username' label="Enter username"/>
+                <TextField variant="filled" values={login.password} onChange={(e)=>onValueChange(e)} name='password' type="password" label="Enter password"/>
 
                 {error && <Error>{error}</Error>}
 
@@ -137,9 +137,10 @@ const Login=({isUserAuthenticated})=>{
             </Wrapper>
             :
             <Wrapper> 
-                <TextField variant="standard" onChange={(e)=>onInputChange(e)} name='name' label="Enter Name"/>
-                <TextField variant="standard" onChange={(e)=>onInputChange(e)} name='username' label="Enter Username"/>
-                <TextField variant="standard" onChange={(e)=>onInputChange(e)} name='password' label="Enter password"/>
+                <h1>Hello!</h1>
+                <TextField variant="filled" onChange={(e)=>onInputChange(e)} name='name' label="Enter Name"/>
+                <TextField variant="filled" onChange={(e)=>onInputChange(e)} name='username' label="Enter Username"/>
+                <TextField variant="filled" onChange={(e)=>onInputChange(e)} name='password' type="password" label="Enter password"/>
                 
                 {error && <Error>{error}</Error>}
                 <SignupButton onClick={()=>{signupUser()}}>Signup</SignupButton>
@@ -147,7 +148,7 @@ const Login=({isUserAuthenticated})=>{
                 <LoginButton variant="contained" onClick={()=>toggleSignup()}>Already have an account?</LoginButton> 
             </Wrapper>
             }
-        </Box>
+      
         </Component>
     )
 }

@@ -14,8 +14,9 @@ const Container=styled(Box)(({theme})=>({
 }))
 
 const Image=styled('img')({
+    padding:'30px',
     width:'65%',
-    Height:'50vh',
+    height:'50vh',
     objectFit:'cover'
 });
 const Heading=styled(Typography)`
@@ -54,7 +55,7 @@ const DetailView=()=>{
     const {id}=useParams();
     const navigate=useNavigate();
     const {account}=useContext(DataContext);
-    const url=post.picture? post.picture:'https://img.freepik.com/free-vector/happy-people-having-fun-rock-concert-flat-illustration_74855-5266.jpg?size=626&ext=jpg&ga=GA1.1.1687454602.1685034731&semt=ais';
+    const url=post.picture? post.picture:'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTdkv81N-86R4H2H40vJYhZ9xgJ-L2nqaeyow&usqp=CAU';
     
     useEffect(()=>{
         const fetchData=async()=>{
@@ -75,14 +76,16 @@ const DetailView=()=>{
 
     return(
         <Container>
+               
+            
             <Image src={url} alt="image" />
-            <Box style={{float:'right'}}>
+            <Box style={{float:'right',padding:'30px'}}>
                 {
                     account.username=== post.username &&
-                    <>
-                        <Link to={`/update/${post._id}`}><EditIcon color='primary'/></Link>
-                        <DeleteIcon onClick={()=>deleteBlog(post._id)} color='error'/>
-                    </>
+                    <div>
+                        <Link to={`/update/${post._id}`}><EditIcon color='primary' style={{padding:'10px'}}/></Link>
+                        <DeleteIcon onClick={()=>deleteBlog(post._id)} color='error' style={{padding:'10px'}} />
+                    </div>
                 }
                 
             </Box>
