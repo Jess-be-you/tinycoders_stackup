@@ -53,7 +53,7 @@ const DetailView=()=>{
     const [post,setPost]=useState({});
     const {id}=useParams();
     const navigate=useNavigate();
-    const account=useContext(DataContext);
+    const {account}=useContext(DataContext);
     const url=post.picture? post.picture:'https://img.freepik.com/free-vector/happy-people-having-fun-rock-concert-flat-illustration_74855-5266.jpg?size=626&ext=jpg&ga=GA1.1.1687454602.1685034731&semt=ais';
     
     useEffect(()=>{
@@ -66,8 +66,8 @@ const DetailView=()=>{
         fetchData();
     },[])
 
-    const deleteBlog=async()=>{
-        let response= await API.deletePost(post._id);
+    const deleteBlog=async(id)=>{
+        let response= await API.deletePost(id);
         if(response.isSuccess){
             navigate('/');
         }
@@ -78,16 +78,18 @@ const DetailView=()=>{
             <Image src={url} alt="image" />
             <Box style={{float:'right'}}>
                 {
-                    account.username=== post.uesername &&
+                    account.username=== post.username &&
                     <>
                         <Link to={`/update/${post._id}`}><EditIcon color='primary'/></Link>
-                        <DeleteIcon onClick={()=>deleteBlog()} color='error'/>
+                        <DeleteIcon onClick={()=>deleteBlog(post._id)} color='error'/>
                     </>
                 }
                 
             </Box>
             <Box>
-                <Heading>Author: <Box component='span' style={ {fontWeight:600} }>{post.username}</Box></Heading>
+                <Heading><Box component='span' style={ {fontWeight:600} }>{post.title}</Box></Heading>
+                {/* <h1>{account.username}</h1> */}
+                <h2>Author: <Box component='span' style={ {fontWeight:400} }>{post.username}</Box></h2>
                 <Typography style={{marginLeft:'auto'}}>Event posted on: {new Date(post.createdDate).toDateString()}</Typography>
             </Box>
             <Typography>Event Description: </Typography>

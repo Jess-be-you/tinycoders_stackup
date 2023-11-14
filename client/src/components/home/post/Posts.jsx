@@ -22,7 +22,7 @@ const Posts = () => {
     },[category])
 
   return (
-    <div style={{display:'flex'}}>
+    <div style={{display:'flex',justifyContent:'space-between',flexWrap:'wrap'}}>
            {
                 posts && posts.length >0 ? posts.map(post => (
                     <div>

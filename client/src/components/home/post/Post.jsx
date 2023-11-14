@@ -8,6 +8,8 @@ const Container = styled(Box)`
     display: flex;
     align-items: center;
     flex-direction: column;
+    width: 200px;
+    max-width: 250px;
     height: 350px;
     & > img, & > p {
         padding: 0 5px 5px 5px;
