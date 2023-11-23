@@ -8,7 +8,7 @@
 ## Team Id
 tinycoders
 ## Link to product walkthrough
-[link to video]
+[[Project Video Link](https://www.loom.com/share/cecbff32a1ca4f9d8e0c20e28e3d6b0b?sid=a9965556-cb59-4cfa-9c51-8f11d3539913)]
 ## How it Works ?
 1. Explaining the working of project
 2. Embed video of project demo
@@ -25,6 +25,8 @@ Material-UI - 5.2.3
 ## How to configure
 Instructions for setting up project
 ## How to Run
-Instructions for running
+1. Install all dependencies : npm i
+2. Open client and server in seperate terminal
+3. Run both seperately : npm start
 
 
